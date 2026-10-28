@@ -1,0 +1,10 @@
+# Backend function for scheduled lookup refreshes.
+# Backend functions require an Enterprise plan. If yours does not include them,
+# delete this file, config/schedules.yml and the backend/ folder; "Run now" still works.
+runtime: js
+endpoints:
+  - name: runLookups
+    script: backend/run-lookups.ts
+    description: Runs lookups whose schedule is due, or one lookup on request.
+    timeout: 600
+    memory: 512

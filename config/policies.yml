@@ -1,0 +1,29 @@
+# Cribl API paths the App UI and backend function call (see src/lookup-manager/core/cribl.ts).
+# Use '*' for the group segment: ':gid' did not match group paths in Cribl 4.20 testing.
+# Search jobs and saved searches (/m/*/search/jobs, /m/*/search/saved) are deliberately not declared. With user-based permissions (appAuthMode "legacy")
+# they then run with the signed-in member's own dataset access, which works. In strict mode,
+# declared Search calls were refused access to every dataset. Whether declaring them changes
+# behaviour in user-based mode has not been tested.
+# The App's own KV store, proxy, backend function and schedule paths need no entry.
+policies:
+  # List Worker Groups; read a group's pending changes; deploy a group
+  - object: '/master/groups'
+    actions: ['GET']
+  - object: '/master/groups/*'
+    actions: ['GET', 'PATCH']
+  # Commit a group's changes after a lookup update
+  - object: '/version/commit'
+    actions: ['POST']
+  # Upload, create, replace, read and remove lookups (Stream groups, and the Search group when supported)
+  - object: '/m/*/system/lookups'
+    actions: ['GET', 'POST', 'PUT']
+  - object: '/m/*/system/lookups/*'
+    actions: ['GET', 'PATCH', 'DELETE']
+  # Cribl Search jobs are intentionally not declared (see the note at the top).
+  # Start one-off runs of a saved REST Collector (Splunk through a worker) and read their status
+  - object: '/m/*/lib/jobs/*'
+    actions: ['GET']
+  - object: '/m/*/jobs'
+    actions: ['POST']
+  - object: '/m/*/jobs/*'
+    actions: ['GET']

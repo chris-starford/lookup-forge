@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Dependency audit (high and critical block the build)
+        run: npm audit --audit-level=high
+      - run: npm run build
+      - name: Engine and backend tests
+        run: npm test
+      - name: Browser test
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:ui
+      - name: Package
+        run: npm run package -- --version "$(node -p "require('./package.json').version")"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-package
+          path: build/*.tgz

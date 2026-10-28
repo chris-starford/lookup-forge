@@ -1,0 +1,18 @@
+# External hosts the App may call. Cribl enforces this list at runtime.
+# Hosts that differ per customer (CMDB, IPAM, identity provider, Splunk) are NOT listed here:
+# an administrator authorizes them after install under App Settings > External API Access.
+# Store any credential in the App KV store with encrypted=true and inject it with headers.inject.
+
+# abuse.ch Feodo Tracker (threat intelligence template example, no authentication)
+feodotracker.abuse.ch:
+  paths:
+    allowlist:
+      - /downloads/
+  timeout: 30000
+
+# CISA Known Exploited Vulnerabilities (vulnerability template example, no authentication)
+www.cisa.gov:
+  paths:
+    allowlist:
+      - /sites/default/files/feeds/
+  timeout: 30000

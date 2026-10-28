@@ -1,0 +1,84 @@
+{
+  "id": "splunk_lookup_staging",
+  "conf": {
+    "asyncFuncTimeout": 1000,
+    "description": "Lookup Manager: shape Splunk inputlookup export rows into staging events for the Lake dataset lookup_staging",
+    "output": "default",
+    "streamtags": [
+      "lookup-manager"
+    ],
+    "groups": {},
+    "functions": [
+      {
+        "id": "comment",
+        "filter": "true",
+        "conf": {
+          "comment": "Input: Splunk /services/search/v2/jobs/export (output_mode=json), one line per row: {\"preview\":false,\"result\":{...}}. The collector adds splunk_lookup (the lookup name) and, for runs started by the Lookup Manager App, sync_id (one per request). Output: one JSON event per row, sourcetype cribl:lookup:staging, sent to the cloud HEC source and routed to Lake dataset lookup_staging."
+        }
+      },
+      {
+        "id": "serde",
+        "filter": "true",
+        "description": "Parse the export line",
+        "conf": {
+          "mode": "extract",
+          "type": "json",
+          "srcField": "_raw",
+          "keep": [],
+          "remove": []
+        }
+      },
+      {
+        "id": "drop",
+        "filter": "!result || preview === true",
+        "description": "Drop preview, progress and message lines",
+        "conf": {}
+      },
+      {
+        "id": "eval",
+        "filter": "true",
+        "description": "One clean JSON row per event",
+        "conf": {
+          "add": [
+            {
+              "name": "splunk_lookup",
+              "value": "splunk_lookup || 'unknown_lookup'"
+            },
+            {
+              "name": "_raw",
+              "value": "JSON.stringify(Object.assign({}, result, { splunk_lookup: splunk_lookup || 'unknown_lookup', sync_id: sync_id || undefined }))"
+            },
+            {
+              "name": "sourcetype",
+              "value": "'cribl:lookup:staging'"
+            },
+            {
+              "name": "source",
+              "value": "'splunk:' + (splunk_lookup || 'unknown_lookup')"
+            }
+          ]
+        }
+      },
+      {
+        "id": "eval",
+        "filter": "true",
+        "description": "Send only the row and its metadata",
+        "conf": {
+          "add": [],
+          "remove": [
+            "*"
+          ],
+          "keep": [
+            "_raw",
+            "_time",
+            "host",
+            "source",
+            "sourcetype",
+            "splunk_lookup",
+            "sync_id"
+          ]
+        }
+      }
+    ]
+  }
+}

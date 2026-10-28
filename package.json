@@ -1,0 +1,73 @@
+{
+  "name": "lookup-manager",
+  "private": true,
+  "version": "1.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && apps build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "package": "apps package",
+    "test": "tsx --test dev-tests/core.test.ts dev-tests/backend.test.ts",
+    "test:ui": "esbuild dev-tests/harness.tsx --bundle --outfile=dev-tests/dist/app.js --format=iife --jsx=automatic --loader:.css=css --define:process.env.NODE_ENV='\"development\"' --log-level=warning && cp dev-tests/index.html dev-tests/dist/ && node dev-tests/ui.test.cjs",
+    "audit": "npm audit --audit-level=high"
+  },
+  "dependencies": {
+    "@capra/core": "^1.20.0",
+    "@capra/dx-tokens-postcss-plugin": "^0.4.0",
+    "@capra/icons": "^1.11.1",
+    "@capra/theme": "^1.7.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@cribl/apps": "1.3.0",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "esbuild": "^0.27.0",
+    "oxlint": "^1.89.0",
+    "playwright": "^1.56.0",
+    "tsx": "^4.21.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5"
+  },
+  "displayName": "Lookup Manager",
+  "description": "Build enrichment lookups once and publish them to Cribl Stream worker groups and Cribl Search, from Lake searches, HTTP APIs, files and Splunk.",
+  "author": "Chris Starford",
+  "minLogStreamVersion": "4.18.0",
+  "cribl": {
+    "type": "app",
+    "appAuthMode": "legacy",
+    "createAppScriptVersion": "1.3.0"
+  },
+  "tags": {
+    "product": []
+  },
+  "keywords": [
+    "cribl",
+    "cribl-app",
+    "lookups",
+    "enrichment",
+    "splunk"
+  ],
+  "Tags": {
+    "products": [
+      "Stream",
+      "Search",
+      "Lake"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris-starford/Cribl-Lookup-Manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chris-starford/Cribl-Lookup-Manager/issues"
+  },
+  "homepage": "https://github.com/chris-starford/Cribl-Lookup-Manager#readme",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,4 @@
+# Checks every 15 minutes (UTC) for lookups whose own schedule is due.
+run-due-lookups:
+  endpoint: runLookups
+  cronSchedule: '*/15 * * * *'

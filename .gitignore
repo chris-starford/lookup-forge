@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+backend-build/
+dev-tests/dist/
+dev-tests/*.png
+*.tgz
+.env
+.env.*
+*.log
+.DS_Store
+coverage/
+openapi.json
