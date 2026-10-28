@@ -20,12 +20,12 @@ export interface GuideSection {
 export const GUIDE: GuideSection[] = [
   {
     id: 'how-it-works',
-    title: 'How Lookup Manager works',
+    title: 'How Lookup Forge works',
     summary: 'One lookup, built from your sources, checked, and published to Stream and Search.',
     blocks: [
       {
         type: 'p',
-        text: 'A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is, whether an indicator is known to be malicious. Lookup Manager keeps each lookup in one place and publishes the same file everywhere it is used.',
+        text: 'A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is, whether an indicator is known to be malicious. Lookup Forge keeps each lookup in one place and publishes the same file everywhere it is used.',
       },
       {
         type: 'steps',
@@ -342,7 +342,7 @@ export const GUIDE_FOR = {
 /** Render the guide as Markdown (docs/USER_GUIDE.md). */
 export function guideToMarkdown(appVersion: string): string {
   const out: string[] = [
-    '# Lookup Manager user guide',
+    '# Lookup Forge user guide',
     '',
     `This guide is generated from the App's built-in Help (version ${appVersion}). Edit \`src/lookup-manager/ui/guide.ts\`, then run \`npx tsx scripts/build-user-guide.ts\`.`,
     '',

@@ -2,10 +2,10 @@
   "id": "splunk_lookup_staging",
   "conf": {
     "asyncFuncTimeout": 1000,
-    "description": "Lookup Manager: shape Splunk inputlookup export rows into staging events for the Lake dataset lookup_staging",
+    "description": "Lookup Forge: shape Splunk inputlookup export rows into staging events for the Lake dataset lookup_staging",
     "output": "default",
     "streamtags": [
-      "lookup-manager"
+      "lookup-forge"
     ],
     "groups": {},
     "functions": [
@@ -13,7 +13,7 @@
         "id": "comment",
         "filter": "true",
         "conf": {
-          "comment": "Input: Splunk /services/search/v2/jobs/export (output_mode=json), one line per row: {\"preview\":false,\"result\":{...}}. The collector adds splunk_lookup (the lookup name) and, for runs started by the Lookup Manager App, sync_id (one per request). Output: one JSON event per row, sourcetype cribl:lookup:staging, sent to the cloud HEC source and routed to Lake dataset lookup_staging."
+          "comment": "Input: Splunk /services/search/v2/jobs/export (output_mode=json), one line per row: {\"preview\":false,\"result\":{...}}. The collector adds splunk_lookup (the lookup name) and, for runs started by the Lookup Forge App, sync_id (one per request). Output: one JSON event per row, sourcetype cribl:lookup:staging, sent to the cloud HEC source and routed to Lake dataset lookup_staging."
         }
       },
       {

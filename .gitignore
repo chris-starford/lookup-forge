@@ -10,5 +10,6 @@ dev-tests/*.png
 *.log
 .DS_Store
 coverage/
-openapi.json
+
+# Cribl OpenAPI specification bundled by the Create App scaffold (large, generated; for local coding assistants only)
 openapi.json

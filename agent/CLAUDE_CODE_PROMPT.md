@@ -1,4 +1,4 @@
-# Claude Code prompt: sync a Splunk lookup to the Cribl Lookup Manager
+# Claude Code prompt: sync a Splunk lookup to the Cribl Lookup Forge
 
 Paste the prompt below into Claude Code (started with `cd ~ && claude`). Change the lookup name and the script path if yours differ.
 
@@ -31,7 +31,7 @@ Sync the Splunk lookup cmdb_assets.csv into Cribl's lookup staging area.
 
 5. Report the sync_id, the number of rows staged, and any rows with an empty "ip".
    Remind me that the rows reach the Lake dataset lookup_staging after a few minutes, and
-   that the Lookup Manager lookup using "Splunk via Lake staging" publishes them to
+   that the Lookup Forge lookup using "Splunk via Lake staging" publishes them to
    Cribl Stream and Cribl Search.
 
 6. Delete /tmp/cmdb_assets.json when you are done.

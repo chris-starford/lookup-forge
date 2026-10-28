@@ -1,10 +1,10 @@
-# Lookup Manager
+# Lookup Forge
 
 Build enrichment lookups once — from Lake searches, HTTP APIs, files or Splunk — check them, and publish the same lookup to Cribl Stream worker groups and Cribl Search.
 
 ## What This App Does
 
-Enrichment lookups (asset owners, identities, network zones, service ports, threat indicators) usually live in several places and drift apart. Lookup Manager gives them one home:
+Enrichment lookups (asset owners, identities, network zones, service ports, threat indicators) usually live in several places and drift apart. Lookup Forge gives them one home:
 
 - **Build** a lookup from a template or your own columns, from one or more sources, merged in order.
 - **Check** it before anything changes: key validity (exact, CIDR, regex), empty and duplicate keys, row limits, and a block when the row count drops sharply.
@@ -49,8 +49,8 @@ Known limits: Cribl Search's export-to-lookup fallback is limited to 10,000 rows
 
 ## Installation
 
-- **From the Cribl Marketplace (when listed):** an administrator opens **Apps**, finds **Lookup Manager** in the Marketplace, reviews its permissions and external access, and installs it.
-- **Manually:** download the release `.tgz` from the repository's Releases page, then **Apps › Add App › Import from File**. To upgrade, use **Apps › Installed › Lookup Manager › Upgrade**, which keeps the App's saved lookups and sharing.
+- **From the Cribl Marketplace (when listed):** an administrator opens **Apps**, finds **Lookup Forge** in the Marketplace, reviews its permissions and external access, and installs it.
+- **Manually:** download the release `.tgz` from the [Releases page](https://github.com/chris-starford/Cribl-Lookup-Manager/releases), then **Apps › Add App › Import from File**. To upgrade, use **Apps › Installed › Lookup Forge › Upgrade**, which keeps the App's saved lookups and sharing.
 
 After installing:
 
@@ -134,14 +134,19 @@ The App reads source data (Lake datasets, APIs, files, Splunk) only to build loo
 
 ## Support Model
 
-Lookup Manager is maintained by **Chris Starford**.
+Lookup Forge is maintained by **Chris Starford**.
 
-- Issues and feature requests: `<REPOSITORY_URL>/issues`
-- Security reports: see [SECURITY.md](SECURITY.md)
+- Issues and feature requests: `https://github.com/chris-starford/Cribl-Lookup-Manager/issues`
+- Contact: [christopher.starford@accenture.com](mailto:christopher.starford@accenture.com)
+- Security reports: private vulnerability reporting on GitHub, or email (see [SECURITY.md](SECURITY.md))
 - Release notes: [CHANGELOG.md](CHANGELOG.md)
 - Operations: [docs/RUNBOOK.md](docs/RUNBOOK.md)
 
 Security fixes follow the Cribl Marketplace windows: critical within 10 days, high within 4 weeks.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).
 
 ## Known Limitations and Troubleshooting
 

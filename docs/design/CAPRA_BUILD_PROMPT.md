@@ -1,9 +1,9 @@
-# Prompt: build the Capra interface (Lookup Manager 2.0)
+# Prompt: build the Capra interface (Lookup Forge 2.0)
 
 Paste this into Claude Code from the project root. Work one screen at a time; review each change before accepting it.
 
 ```text
-Rebuild the Lookup Manager UI with Capra, following docs/design/CAPRA_SPEC.md.
+Rebuild the Lookup Forge UI with Capra, following docs/design/CAPRA_SPEC.md.
 
 Before writing code:
 1. Read AGENTS.md, docs/design/CAPRA_SPEC.md, DEVELOPMENT.md, and Capra's documentation

@@ -257,7 +257,7 @@ test('lifecycle: published locations are tracked, diffs computed, renames and re
   const results = await removeLocations(staleLocations(saved, renamed)!, DEFAULT_SETTINGS);
   assert.ok(results.every((r) => r.status === 'ok'), JSON.stringify(results));
   for (const g of ['default', 'chris_demo', 'default_search']) assert.ok(!mock.state.lookups[g].has('ip_subnets.csv'), g);
-  const removal = (mock.state.commits as any[]).find((c) => c.message === 'Lookup Manager: remove ip_subnets.csv' && c.group === 'chris_demo');
+  const removal = (mock.state.commits as any[]).find((c) => c.message === 'Lookup Forge: remove ip_subnets.csv' && c.group === 'chris_demo');
   assert.deepEqual(removal.files.sort(), ['groups/chris_demo/data/lookups/ip_subnets.csv', 'groups/chris_demo/data/lookups/ip_subnets.yml']);
   // Removing something already gone is fine.
   const again = await removeLocations({ name: 'ip_subnets', search: true, streamGroups: ['default'] }, DEFAULT_SETTINGS);

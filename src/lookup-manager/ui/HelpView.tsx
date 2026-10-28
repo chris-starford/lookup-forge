@@ -128,7 +128,7 @@ export function HelpDrawer({ section, onClose }: { section: string; onClose: () 
   }, [onClose]);
   return (
     <div className="lm-drawer-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
-      <aside className="lm-drawer" role="dialog" aria-modal="true" aria-label="Lookup Manager guide">
+      <aside className="lm-drawer" role="dialog" aria-modal="true" aria-label="Lookup Forge guide">
         <div className="lm-row lm-between lm-drawer-head">
           <strong>Guide</strong>
           <button type="button" className="lm-btn lm-btn-small" onClick={onClose}>

@@ -1,6 +1,6 @@
 # Splunk sources
 
-Lookup Manager offers three ways to get lookups and search results out of Splunk.
+Lookup Forge offers three ways to get lookups and search results out of Splunk.
 
 | Route | Use when | Setup |
 |---|---|---|
@@ -12,7 +12,7 @@ Both Splunk modes, an existing lookup (`| inputlookup`) or the results of any SP
 
 ## Staging setup (worker and staging routes)
 
-Rows travel outbound: Splunk → worker group → Cribl.Cloud HEC → route → Lake dataset → Lookup Manager. Nothing needs to reach Splunk from Cribl.Cloud.
+Rows travel outbound: Splunk → worker group → Cribl.Cloud HEC → route → Lake dataset → Lookup Forge. Nothing needs to reach Splunk from Cribl.Cloud.
 
 In the Cribl.Cloud group that receives HEC (often `default`):
 

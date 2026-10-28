@@ -1,4 +1,4 @@
-// Lookup Manager — shared types used by the UI and the backend runner.
+// Lookup Forge — shared types used by the UI and the backend runner.
 
 export type EnrichmentType =
   | 'asset'

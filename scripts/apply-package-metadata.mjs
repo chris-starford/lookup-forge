@@ -10,6 +10,21 @@ const args = Object.fromEntries(
 const path = new URL('../package.json', import.meta.url);
 const pkg = JSON.parse(readFileSync(path, 'utf8'));
 
+// Rename from the original App ID / display name, wherever the scaffold stored them (name, cribl.*, display fields).
+const renamed = [];
+const rename = (node, where) => {
+  for (const [k, v] of Object.entries(node)) {
+    if (typeof v === 'string') {
+      const next = v === 'lookup-manager' ? 'lookup-forge' : v === 'Lookup Manager' ? 'Lookup Forge' : v;
+      if (next !== v) {
+        node[k] = next;
+        renamed.push(`${where}${k}`);
+      }
+    } else if (v && typeof v === 'object' && !Array.isArray(v) && !['dependencies', 'devDependencies', 'scripts'].includes(k)) rename(v, `${where}${k}.`);
+  }
+};
+rename(pkg, '');
+
 pkg.description = 'Build enrichment lookups once and publish them to Cribl Stream worker groups and Cribl Search, from Lake searches, HTTP APIs, files and Splunk.';
 pkg.keywords = [...new Set([...(pkg.keywords ?? []), 'cribl', 'cribl-app', 'lookups', 'enrichment', 'splunk'])];
 pkg.Tags = { ...(pkg.Tags ?? {}), products: ['Stream', 'Search', 'Lake'] };
@@ -32,4 +47,5 @@ if (args.author) pkg.author = args.author;
 
 writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
 console.log('package.json updated:', ['description', 'keywords', 'Tags', 'cribl.appAuthMode', 'scripts', 'devDependencies', args.repo && 'repository/bugs/homepage', args.license && 'license', args.author && 'author'].filter(Boolean).join(', '));
+if (renamed.length) console.log('Renamed to lookup-forge / Lookup Forge:', renamed.join(', '));
 console.log('Next: npm install');

@@ -2,6 +2,15 @@
 
 Versions follow semantic versioning: the last number for fixes, the middle number for new features that keep existing lookups working, the first number for changes that need existing lookups or settings to be migrated.
 
+## 1.4.0 — 2026-10-28
+
+Changed:
+
+- **Renamed to Lookup Forge.** App ID and package name `lookup-forge`; display name "Lookup Forge". The interface, help, documentation, commit messages (`Lookup Forge: …`) and scheduled-search descriptions use the new name.
+- Internal names are unchanged (`src/lookup-manager/`, `lm-` storage keys, `lm_src_*` scheduled searches), so the code and saved data formats are the same.
+
+Migration: a new App ID is a new App in Cribl. Install Lookup Forge alongside an existing "Lookup Manager" install, recreate or re-save its lookups, then uninstall the old App. Lookups already published to Stream and Search are unaffected and can be taken over by re-saving them in Lookup Forge with the same file names.
+
 ## 1.3.0 — 2026-10-28
 
 New:

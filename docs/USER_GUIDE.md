@@ -1,10 +1,10 @@
-# Lookup Manager user guide
+# Lookup Forge user guide
 
-This guide is generated from the App's built-in Help (version 1.3.0). Edit `src/lookup-manager/ui/guide.ts`, then run `npx tsx scripts/build-user-guide.ts`.
+This guide is generated from the App's built-in Help (version 1.4.0). Edit `src/lookup-manager/ui/guide.ts`, then run `npx tsx scripts/build-user-guide.ts`.
 
 ## Contents
 
-1. [How Lookup Manager works](#how-it-works) — One lookup, built from your sources, checked, and published to Stream and Search.
+1. [How Lookup Forge works](#how-it-works) — One lookup, built from your sources, checked, and published to Stream and Search.
 2. [Quick start: your first lookup in five minutes](#quick-start) — Publish an IP subnet lookup and see it in Stream and Search.
 3. [Templates](#templates) — Starting points for common enrichment. Everything can be changed.
 4. [Sources, with examples](#sources) — Where rows come from, and when to use each source type.
@@ -20,11 +20,11 @@ This guide is generated from the App's built-in Help (version 1.3.0). Edit `src/
 
 <a id="how-it-works"></a>
 
-## How Lookup Manager works
+## How Lookup Forge works
 
 *One lookup, built from your sources, checked, and published to Stream and Search.*
 
-A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is, whether an indicator is known to be malicious. Lookup Manager keeps each lookup in one place and publishes the same file everywhere it is used.
+A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is, whether an indicator is known to be malicious. Lookup Forge keeps each lookup in one place and publishes the same file everywhere it is used.
 
 1. Read: the App reads rows from the lookup's main source and any additional sources (Lake searches, HTTP APIs, files, Splunk).
 2. Map: each source field is mapped to a lookup column.

@@ -38,7 +38,7 @@ export function stagingName(def: LookupDefinition, key: string): string {
 
 /** The scheduled search for one source: its raw rows, exported to the staging lookup. */
 export function stagingQuery(source: SourceConfig, lookupName: string, settings: Settings, defName = ''): string {
-  const tail = ` | export mode=overwrite description="Lookup Manager staging (do not edit)" to lookup ${lookupName}`;
+  const tail = ` | export mode=overwrite description="Lookup Forge staging (do not edit)" to lookup ${lookupName}`;
   if (source.type === 'search') return `${source.query.trim()} | limit 10000${tail}`;
   if (source.type === 'splunk_staging') {
     const ds = source.dataset || settings.splunkStagingDataset;
@@ -62,8 +62,8 @@ export async function syncSchedules(def: LookupDefinition, settings: Settings): 
       const src = w.source as Extract<SourceConfig, { type: 'search' | 'splunk_staging' | 'splunk_worker' }>;
       await upsertSavedSearch(settings.searchGroup, {
         id: name,
-        name: `Lookup Manager: ${def.title} (${w.key})`,
-        description: `Refreshes staging lookup ${name} for ${def.name}. Managed by the Lookup Manager App; edit the lookup there.`,
+        name: `Lookup Forge: ${def.title} (${w.key})`,
+        description: `Refreshes staging lookup ${name} for ${def.name}. Managed by the Lookup Forge App; edit the lookup there.`,
         query: stagingQuery(w.source, name, settings, def.name),
         earliest: src.type === 'splunk_worker' ? '-7d' : src.earliest || '-24h',
         latest: src.type === 'search' ? src.latest || 'now' : 'now',

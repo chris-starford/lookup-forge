@@ -1,10 +1,10 @@
-# Syncing Splunk lookups into the Lookup Manager
+# Syncing Splunk lookups into the Lookup Forge
 
 The App runs in Cribl.Cloud, which cannot connect to a Splunk instance on a laptop. Instead, Splunk lookup rows are **pushed outbound** to Cribl.Cloud, stored in a Lake staging dataset, and picked up by the App.
 
 ```
 Scheduled path:   Splunk REST API ─► chris_demo REST Collector ─► pipeline splunk_lookup_staging ─┐
-                                                                                                  ├─► default: in_splunk_hec ─► route ─► Lake dataset lookup_staging ─► Lookup Manager ─► Stream + Search
+                                                                                                  ├─► default: in_splunk_hec ─► route ─► Lake dataset lookup_staging ─► Lookup Forge ─► Stream + Search
 Agent path:       Splunk MCP ─► Claude Code ─► scripts/stage_splunk_lookup.py ──────────────────────┘
 ```
 
@@ -41,7 +41,7 @@ For Splunk Cloud in production, none of this is needed: allowlist Cribl.Cloud's 
    ```
 
 2. **Stream → `default` → Worker Group Settings → Security → Secrets → Add Secret:** name `lookup_staging_hec`, type **Text**, value from the file.
-3. **Data → Sources → Splunk HEC → `in_splunk_hec` → Auth Tokens → Add Token:** choose the secret option and `lookup_staging_hec`; description "Lookup Manager staging".
+3. **Data → Sources → Splunk HEC → `in_splunk_hec` → Auth Tokens → Add Token:** choose the secret option and `lookup_staging_hec`; description "Lookup Forge staging".
 
 Don't change anything else on this source:
 
@@ -131,7 +131,7 @@ The field labels in the collector form vary between Cribl versions. The values a
 This collector does two jobs:
 
 - **Scheduled sync** of `cmdb_assets.csv` on its own schedule. For more lookups, clone it and change the search and the `splunk_lookup` field.
-- **Template for the Lookup Manager.** The App's "Splunk through a Stream worker" source reads this collector, replaces the `search` parameter and the `splunk_lookup` field, adds a `sync_id` field, and starts a one-off run. For that to work, keep `search` as a request parameter (the App looks for a parameter named `search`), and keep the pipeline and destination settings above.
+- **Template for the Lookup Forge.** The App's "Splunk through a Stream worker" source reads this collector, replaces the `search` parameter and the `splunk_lookup` field, adds a `sync_id` field, and starts a one-off run. For that to work, keep `search` as a request parameter (the App looks for a parameter named `search`), and keep the pipeline and destination settings above.
 
 Commit and deploy `chris_demo` (only the collector, destination, secret and `splunk_lookup_staging` pipeline files), then click **Run** on the collector for the first sync.
 
@@ -165,7 +165,7 @@ Prerequisites: the Splunk MCP server added to Claude Code (`claude mcp list` sho
 
 3. The agent reads the lookup through MCP, writes the rows to a temporary file, runs `scripts/stage_splunk_lookup.py`, and reports the `sync_id` and row count.
 
-4. Check Part 1.5, then run the Lookup Manager lookup that uses this Splunk lookup.
+4. Check Part 1.5, then run the Lookup Forge lookup that uses this Splunk lookup.
 
 The Splunk MCP server returns at most **1,000 rows** per query, so the agent path suits small and medium lookups. For larger ones (a full CMDB, ES asset or identity tables), use the scheduled collector (Part 2) or the direct REST route.
 

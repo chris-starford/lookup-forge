@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Stage Splunk lookup rows for the Cribl Lookup Manager.
+"""Stage Splunk lookup rows for the Cribl Lookup Forge.
 
 Reads rows (JSON array, NDJSON or CSV) and sends them to a Cribl Splunk HEC source as
 sourcetype "cribl:lookup:staging". A Cribl route writes them to the Lake dataset
-"lookup_staging", where the Lookup Manager's "Splunk via Lake staging" source picks up
+"lookup_staging", where the Lookup Forge's "Splunk via Lake staging" source picks up
 the newest sync and publishes it to Cribl Stream and Cribl Search.
 
 Used by an AI agent (for example Claude Code with the Splunk MCP server) or by hand:

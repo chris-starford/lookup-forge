@@ -1,12 +1,12 @@
-# Lookup Manager runbook
+# Lookup Forge runbook
 
-Operational procedures for administrators and platform owners who install, run and support Lookup Manager. For how to build and use lookups, see the in-app **Help** tab or [USER_GUIDE.md](USER_GUIDE.md).
+Operational procedures for administrators and platform owners who install, run and support Lookup Forge. For how to build and use lookups, see the in-app **Help** tab or [USER_GUIDE.md](USER_GUIDE.md).
 
 | | |
 |---|---|
-| App | Lookup Manager (`lookup-manager`) |
+| App | Lookup Forge (`lookup-forge`) |
 | Owner | Chris Starford |
-| Issues | `<REPOSITORY_URL>/issues` |
+| Issues | `https://github.com/chris-starford/Cribl-Lookup-Manager/issues` |
 | Security | [SECURITY.md](../SECURITY.md) |
 
 ---
@@ -15,7 +15,7 @@ Operational procedures for administrators and platform owners who install, run a
 
 | Component | Where | Role |
 |---|---|---|
-| App UI | Cribl.Cloud, **Apps › Lookup Manager** | Members build, preview and publish lookups with their own permissions |
+| App UI | Cribl.Cloud, **Apps › Lookup Forge** | Members build, preview and publish lookups with their own permissions |
 | App KV store | Per App | Definitions, run history, settings, large file content (`lm-*` keys) |
 | Backend function `runLookups` | Per App, every 15 minutes (UTC) | Publishes scheduled lookups that are due, using the App's declared grants |
 | Scheduled searches `lm_src_*` | Cribl Search › Saved Searches | One per Lake-based source of a scheduled lookup; writes a staging lookup `lm_src_*`; saved under the member who saved the lookup |
@@ -40,7 +40,7 @@ Publishing to a Stream group always follows the same sequence: upload the CSV, c
 
 1. **Install:** from the Cribl Marketplace, or **Apps › Add App › Import from File** with the release `.tgz`.
 2. **Review permissions** shown during install against the README's *Permissions and External Access* table.
-3. **Permissions mode:** **Apps › Installed › Lookup Manager › Settings › Permissions** → **Open** (Strict mode off). Strict mode blocks Cribl Search dataset access.
+3. **Permissions mode:** **Apps › Installed › Lookup Forge › Settings › Permissions** → **Open** (Strict mode off). Strict mode blocks Cribl Search dataset access.
 4. **Share:** grant **App user** access to the members or teams who will use it.
 5. **External API Access (optional):** add each customer-specific host (CMDB, IPAM, identity provider, Splunk Cloud) with only the paths it needs. Example entries are in the README's *Configuration* section.
 6. **Credentials (optional):** **Key-Value Stores** → add each API token as an **encrypted** entry, referenced by `headers.inject` in the host entry.
@@ -60,7 +60,7 @@ Splunk staging (only for Splunk via Lake staging or Splunk through a worker): fo
 3. **Scheduled lookups:** the **Last run** time should be within each lookup's schedule.
 4. **Cribl Search › Saved Searches:** every `lm_src_*` search ran recently without errors.
 5. **Splunk staging** (if used): the freshness query in §8 shows a recent sync for each Splunk lookup.
-6. **Stream version control:** recent `Lookup Manager:` commits touch only `data/lookups/` files.
+6. **Stream version control:** recent `Lookup Forge:` commits touch only `data/lookups/` files.
 
 ### Adding a lookup
 
@@ -102,7 +102,7 @@ Limits: 10,000 rows per scheduled Lake-based source; Splunk-through-worker sched
 ### Upgrade
 
 1. Read the release's `CHANGELOG.md` entry, especially *Configuration* changes (new API paths or hosts).
-2. **Apps › Installed › Lookup Manager › Upgrade**, choose the new `.tgz`, review and accept the permission changes.
+2. **Apps › Installed › Lookup Forge › Upgrade**, choose the new `.tgz`, review and accept the permission changes.
 3. Reload the Cribl tab with Ctrl+F5. The App header shows the new version. If it still shows the old one, the browser is serving cached files: F12 › **Application › Service workers › Unregister** and **Storage › Clear site data**.
 4. **Settings › Run diagnostics**, then **Run now** on one lookup.
 
@@ -129,7 +129,7 @@ Always build and package together: packaging alone reuses the previous build. Th
 ### A. A lookup published bad data
 
 1. **Contain:** edit the lookup and set **Schedule › Manual only**, so it isn't republished.
-2. **Restore the previous version in Stream:** in the affected group's version control, open the latest `Lookup Manager: update <name>.csv` commit and copy the previous file content from its diff. Paste it into a temporary lookup with source **File or pasted data**, the same file name and targets, and **Run now**. (Alternatively, fix the source and **Run now**.)
+2. **Restore the previous version in Stream:** in the affected group's version control, open the latest `Lookup Forge: update <name>.csv` commit and copy the previous file content from its diff. Paste it into a temporary lookup with source **File or pasted data**, the same file name and targets, and **Run now**. (Alternatively, fix the source and **Run now**.)
 3. **Search** is restored by the same publish.
 4. **Root cause:** check the run's log in **History** and the source system. Consider a lower *Block if rows drop by more than* value.
 
@@ -225,7 +225,7 @@ Uninstalling removes the App and its KV data. It does **not** remove what the Ap
 | Item | Value |
 |---|---|
 | KV keys | `lm-index`, `lm-def-<id>`, `lm-runs-<id>`, `lm-settings`, `lm-blob-<id>-<source>-<n>`, `lm-catalog-<group>`, `lm-diag` |
-| Commit messages | `Lookup Manager: create|update|remove <name>.csv (...)` |
+| Commit messages | `Lookup Forge: create|update|remove <name>.csv (...)` |
 | Scheduled searches / staging lookups | `lm_src_<lookup>_<source>` |
 | Staging events | sourcetype `cribl:lookup:staging`; fields `splunk_lookup`, `sync_id` |
 | Backend schedule | every 15 minutes, UTC |

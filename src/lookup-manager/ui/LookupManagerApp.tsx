@@ -60,18 +60,18 @@ export default function LookupManagerApp() {
     })();
   }, []);
 
-  if (!hydrated) return <div className="lm-app lm-loading">Loading Lookup Manager…</div>;
+  if (!hydrated) return <div className="lm-app lm-loading">Loading Lookup Forge…</div>;
 
   return (
     <div className="lm-app">
       <header className="lm-header">
         <div>
           <h1>
-            Lookup Manager <span className="lm-version">v{APP_VERSION}</span>
+            Lookup Forge <span className="lm-version">v{APP_VERSION}</span>
           </h1>
           <p className="lm-hint">Build enrichment lookups once and publish them to Cribl Stream and Cribl Search.</p>
         </div>
-        <nav className="lm-tabs" aria-label="Lookup Manager">
+        <nav className="lm-tabs" aria-label="Lookup Forge">
           <button type="button" className={view.kind === 'list' || view.kind === 'edit' ? 'lm-tab lm-tab-active' : 'lm-tab'} onClick={() => setView({ kind: 'list' })}>
             Lookups
           </button>

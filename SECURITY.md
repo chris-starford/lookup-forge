@@ -21,7 +21,7 @@ These follow the Cribl Marketplace's remediation requirements. Fixes are release
 
 ## Supported versions
 
-The latest minor release receives security fixes. Upgrade with **Apps › Installed › Lookup Manager › Upgrade**; saved lookups and sharing are kept.
+The latest minor release receives security fixes. Upgrade with **Apps › Installed › Lookup Forge › Upgrade**; saved lookups and sharing are kept.
 
 ## How the App handles security
 

@@ -4,7 +4,7 @@ about: Something doesn't work as described
 labels: bug
 ---
 
-**App version** (shown next to "Lookup Manager" in the App header):
+**App version** (shown next to "Lookup Forge" in the App header):
 
 **What you did** (template, source type, targets):
 

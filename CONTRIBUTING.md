@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve Lookup Manager.
+Thanks for helping improve Lookup Forge.
 
 1. **Open an issue first** for anything beyond a small fix, so we can agree the approach.
 2. **Set up** as described in [DEVELOPMENT.md](DEVELOPMENT.md).

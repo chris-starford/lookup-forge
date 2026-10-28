@@ -48,7 +48,7 @@ export async function publishToStreamGroup(
     if (exists) await replaceLookup(group, file, tmp, def.description || def.title, mode);
     else await createLookup(group, file, tmp, def.description || def.title, mode);
 
-    const message = `Lookup Manager: ${exists ? 'update' : 'create'} ${file} (${rowCount} rows)`;
+    const message = `Lookup Forge: ${exists ? 'update' : 'create'} ${file} (${rowCount} rows)`;
     let commit: CommitResult;
     let note = '';
     try {
@@ -97,13 +97,13 @@ export async function unpublishFromStreamGroup(name: string, group: string, sett
     }
     let commit: CommitResult;
     try {
-      commit = await commitGroup(group, `Lookup Manager: remove ${file}`, ownFiles);
+      commit = await commitGroup(group, `Lookup Forge: remove ${file}`, ownFiles);
     } catch (selectiveError) {
       const pending = await getPendingChanges(group).catch(() => undefined);
       if (settings.blockIfPendingChanges && (pending === undefined || pending > 2)) {
         return { target, status: 'skipped', detail: `${file} was deleted but not committed (${describeError(selectiveError)}). Commit the removal in Stream.` };
       }
-      commit = await commitGroup(group, `Lookup Manager: remove ${file}`);
+      commit = await commitGroup(group, `Lookup Forge: remove ${file}`);
     }
     await deployGroup(group, commit.id);
     return { target, status: 'ok', detail: `Removed ${file}, committed ${commit.id.slice(0, 7)} and deployed. Pipelines that used it stop enriching until they point at another lookup.` };

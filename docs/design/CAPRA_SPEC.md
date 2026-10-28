@@ -1,4 +1,4 @@
-# Lookup Manager 2.0: Capra interface specification
+# Lookup Forge 2.0: Capra interface specification
 
 Goal: rebuild the UI with Capra, Cribl's design system, so the App looks and behaves like Cribl, without changing what it does. This document is the brief; [CAPRA_BUILD_PROMPT.md](CAPRA_BUILD_PROMPT.md) is the matching prompt for a coding assistant.
 

@@ -40,7 +40,7 @@ const step = async (name, fn) => {
   try {
     await page.goto(page_url());
     await step('loads with an empty lookup list', async () => {
-      await page.getByRole('heading', { name: /Lookup Manager/ }).waitFor();
+      await page.getByRole('heading', { name: /Lookup Forge/ }).waitFor();
       await page.getByText(/^v\d+\.\d+\.\d+$/).first().waitFor();
       await page.getByText('No lookups yet.').waitFor();
     });
@@ -381,7 +381,7 @@ const step = async (name, fn) => {
       await page.getByRole('button', { name: /Custom lookup/ }).click();
       await page.getByRole('textbox', { name: /^Title/ }).fill('My unsaved lookup');
       await page.getByRole('button', { name: 'Open the guide: 4. Map source fields to columns' }).click();
-      const drawer = page.getByRole('dialog', { name: 'Lookup Manager guide' });
+      const drawer = page.getByRole('dialog', { name: 'Lookup Forge guide' });
       await drawer.getByRole('heading', { name: 'Mapping source fields to columns' }).waitFor();
       await page.screenshot({ path: path.join(__dirname, 'shot-help-drawer.png') });
       await page.keyboard.press('Escape');

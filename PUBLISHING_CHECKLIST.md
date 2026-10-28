@@ -1,6 +1,6 @@
 # Publishing checklist
 
-Work through this before submitting Lookup Manager to the Cribl Marketplace, and again for each major release. Requirements come from Cribl's [Publish an App to the Cribl Marketplace](https://docs.cribl.io/apps/publish-to-marketplace/); check that page for the current submission process.
+Work through this before submitting Lookup Forge to the Cribl Marketplace, and again for each major release. Requirements come from Cribl's [Publish an App to the Cribl Marketplace](https://docs.cribl.io/apps/publish-to-marketplace/); check that page for the current submission process.
 
 ## 1. Ownership and agreements
 
@@ -10,8 +10,8 @@ Work through this before submitting Lookup Manager to the Cribl Marketplace, and
 
 ## 2. Identity and packaging
 
-- [ ] App ID / `package.json` `name` is unique in the Marketplace. **Decide before the first listing:** changing the App ID later creates a new App, and installs lose their saved lookups. `lookup-manager` is generic; consider something more distinctive
-- [ ] Display name is clear: "Lookup Manager"
+- [x] App ID chosen: `lookup-forge` (display name "Lookup Forge"). Check it is still unused in the Marketplace before submitting. It must not change after the first listing: a new App ID is a new App, and installs would lose their saved lookups
+- [ ] `package.json` `name` and the App ID are `lookup-forge`
 - [ ] `package.json` has a plain description, `Tags.products` (Stream, Search, Lake), `license`, `repository`, `bugs`, `author` (run `scripts/apply-package-metadata.mjs`)
 - [ ] `package.json` `version`, `src/lookup-manager/version.ts` and the newest `CHANGELOG.md` entry match
 - [ ] Safe defaults on first install: no workshop values; only two public read-only feeds in `config/proxies.yml`; Open permissions mode documented

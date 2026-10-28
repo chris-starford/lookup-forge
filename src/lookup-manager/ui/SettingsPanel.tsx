@@ -138,7 +138,7 @@ export function SettingsPanel({ settings, onSave }: { settings: Settings; onSave
 
       <Section title="About">
         <p>
-          Lookup Manager <strong>v{APP_VERSION}</strong>. See CHANGELOG.md in the App project for what changed in each version.
+          Lookup Forge <strong>v{APP_VERSION}</strong>. See CHANGELOG.md in the App project for what changed in each version.
         </p>
       </Section>
 

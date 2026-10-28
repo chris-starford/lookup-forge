@@ -2,7 +2,7 @@
 
 export const HELP = {
   overview:
-    'A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is. Lookup Manager builds that table from one or more sources, checks it, and publishes the same file to Cribl Stream (enrichment as data arrives) and Cribl Search (enrichment when you query).',
+    'A lookup is a table that adds context to events: who owns an IP address, which network it belongs to, what a port is. Lookup Forge builds that table from one or more sources, checks it, and publishes the same file to Cribl Stream (enrichment as data arrives) and Cribl Search (enrichment when you query).',
   gettingStarted: [
     { title: 'Choose a template', text: 'Start from assets, identities, ports, subnets, threat intelligence, vulnerabilities, or your own columns.' },
     { title: 'Connect a source', text: 'A Cribl Search query over Lake, an HTTP API, a file, or Splunk. Combine several if one source is incomplete.' },
