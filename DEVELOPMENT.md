@@ -32,7 +32,7 @@ New clone in an existing Cribl project:
 
 ```bash
 npm install
-node scripts/apply-package-metadata.mjs --repo https://github.com/chris-starford/Cribl-Lookup-Manager --license Apache-2.0 --author "Chris Starford"
+node scripts/apply-package-metadata.mjs --repo https://github.com/chris-starford/lookup-forge --license Apache-2.0 --author "Chris Starford"
 npm install            # installs the dev dependencies the script added
 npm run dev            # then open Live Preview in Cribl's Create App wizard
 ```

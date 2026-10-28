@@ -6,7 +6,7 @@ Operational procedures for administrators and platform owners who install, run a
 |---|---|
 | App | Lookup Forge (`lookup-forge`) |
 | Owner | Chris Starford |
-| Issues | `https://github.com/chris-starford/Cribl-Lookup-Manager/issues` |
+| Issues | `https://github.com/chris-starford/lookup-forge/issues` |
 | Security | [SECURITY.md](../SECURITY.md) |
 
 ---

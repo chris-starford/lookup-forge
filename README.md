@@ -50,7 +50,7 @@ Known limits: Cribl Search's export-to-lookup fallback is limited to 10,000 rows
 ## Installation
 
 - **From the Cribl Marketplace (when listed):** an administrator opens **Apps**, finds **Lookup Forge** in the Marketplace, reviews its permissions and external access, and installs it.
-- **Manually:** download the release `.tgz` from the [Releases page](https://github.com/chris-starford/Cribl-Lookup-Manager/releases), then **Apps › Add App › Import from File**. To upgrade, use **Apps › Installed › Lookup Forge › Upgrade**, which keeps the App's saved lookups and sharing.
+- **Manually:** download the release `.tgz` from the [Releases page](https://github.com/chris-starford/lookup-forge/releases), then **Apps › Add App › Import from File**. To upgrade, use **Apps › Installed › Lookup Forge › Upgrade**, which keeps the App's saved lookups and sharing.
 
 After installing:
 
@@ -136,7 +136,7 @@ The App reads source data (Lake datasets, APIs, files, Splunk) only to build loo
 
 Lookup Forge is maintained by **Chris Starford**.
 
-- Issues and feature requests: `https://github.com/chris-starford/Cribl-Lookup-Manager/issues`
+- Issues and feature requests: `https://github.com/chris-starford/lookup-forge/issues`
 - Contact: [christopher.starford@accenture.com](mailto:christopher.starford@accenture.com)
 - Security reports: private vulnerability reporting on GitHub, or email (see [SECURITY.md](SECURITY.md))
 - Release notes: [CHANGELOG.md](CHANGELOG.md)
