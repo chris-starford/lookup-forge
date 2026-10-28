@@ -11,3 +11,4 @@ dev-tests/*.png
 .DS_Store
 coverage/
 openapi.json
+openapi.json
