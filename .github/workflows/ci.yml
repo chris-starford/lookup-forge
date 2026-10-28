@@ -29,7 +29,7 @@ jobs:
           npm run test:ui
       - name: Package
         run: npm run package -- --version "$(node -p "require('./package.json').version")"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: app-package
           path: build/*.tgz
